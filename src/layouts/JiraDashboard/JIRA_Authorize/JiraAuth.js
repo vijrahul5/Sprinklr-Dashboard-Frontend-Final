@@ -27,11 +27,18 @@ const JiraAuth = () => {
           onChange={(event) => setClientSecret(event.currentTarget.value)}
         />
       </FormControl>
-      <Button onClick={() => showAuthPage(URL)} style={{ margin: "2rem" }}>
+      <Button
+        onClick={() => {
+          showAuthPage(URL);
+          localStorage.setItem("CLIENT_ID", clientId);
+          localStorage.setItem("CLIENT_SECRET", clientSecret);
+        }}
+        style={{ margin: "2rem" }}
+      >
         Authorize
       </Button>
 
-      <Button onClick={() => getTokens(clientId, clientSecret)}>Save</Button>
+      <Button onClick={() => getTokens()}>Save</Button>
     </div>
   );
 };

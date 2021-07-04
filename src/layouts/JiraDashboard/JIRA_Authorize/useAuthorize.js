@@ -27,8 +27,10 @@ const useAuthorize = () => {
     let AUTH_CODE = window.location.href.slice(28, len - 12);
     return AUTH_CODE;
   }
-  async function getTokens(client_id, client_secret) {
+  async function getTokens() {
     let AUTH_CODE = getAuthCode();
+    let client_id = localStorage.getItem("CLIENT_ID");
+    let client_secret = localStorage.getItem("CLIENT_SECRET");
     console.log(client_id, client_secret, AUTH_CODE);
     let [REFRESH_TOKEN, ACCESS_TOKEN] = await getRefreshAndAccessCode(
       "https://auth.atlassian.com/oauth/token",
