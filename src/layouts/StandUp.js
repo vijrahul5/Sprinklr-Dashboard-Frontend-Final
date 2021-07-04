@@ -1,7 +1,9 @@
 import React from "react";
 import Loader from "../components/Loader/Loader";
 import { useFetchEmployeeStandUp, useUpdateStandUp } from "../Api";
-
+import { FormControl } from "baseui/form-control";
+import { Input } from "baseui/input";
+import { Button } from "baseui/button";
 function StandUp() {
     // Component for Stand Up message submission or editing
     const [loading, data, error] = useFetchEmployeeStandUp(); // Fetches employee's stand up for the day
@@ -56,6 +58,7 @@ function StandUp() {
             <>
                 {data ? (
                     <form className="standUpForm" onSubmit={handleEdit}>
+                        
                         <label htmlFor="question1">
                             What work was done yesterday ?
                         </label>

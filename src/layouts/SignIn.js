@@ -19,8 +19,8 @@ export default class SignIn extends Component {
         return (
             <>
                 <Navbar />
-                <div className="outer">
-                    <div className="inner">
+                <div className="signin-container">
+                    <div className="signin">
                         <h3>Sign In</h3>
                         <GoogleLogin
                             clientId={`${process.env.REACT_APP_CLIENT_ID}`}

@@ -2,6 +2,9 @@ import React from "react";
 import TeamMember from "./TeamMember";
 import Loader from "../components/Loader/Loader";
 import { useUpdateTeam, useFetchEmployeeTeamData } from "../Api";
+import { FormControl } from "baseui/form-control";
+import { Input } from "baseui/input";
+import { Button } from "baseui/button";
 
 function Team() {
     // Component for accessing team data and their stand ups
@@ -56,38 +59,40 @@ function Team() {
         return (
             <>
                 <form className="teamForm" onSubmit={handleAddBtn}>
-                    <div>
-                        <label htmlFor="employeeEmail">Add Team Member</label>
-                        <input
-                            type="text"
-                            placeholder="Enter Email"
-                            name="employeeEmail"
-                            className="form-control"
-                        />
-                    </div>
-                    <input
-                        type="submit"
-                        className="submit btn btn-dark"
-                        value="Add"
-                    />
+                    <FormControl
+                        label={() => "Add Team Member"}
+                        className="form-control"
+                    >
+                        <>
+                            <Input
+                                type="text"
+                                placeholder="Enter Email"
+                                name="employeeEmail"
+                                className="form-control"
+                            />
+                            <Button type="submit" className="submit">
+                                Add
+                            </Button>
+                        </>
+                    </FormControl>
                 </form>
                 <form className="teamForm" onSubmit={handleDeleteBtn}>
-                    <div>
-                        <label htmlFor="employeeEmail">
-                            Delete Team Member
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="Enter Email"
-                            name="employeeEmail"
-                            className="form-control"
-                        />
-                    </div>
-                    <input
-                        type="submit"
-                        className="submit btn btn-dark"
-                        value="Delete"
-                    />
+                    <FormControl
+                        label={() => "Delete Team Member"}
+                        className="form-control"
+                    >
+                        <>
+                            <Input
+                                type="text"
+                                placeholder="Enter Email"
+                                name="employeeEmail"
+                                className="form-control"
+                            />
+                            <Button type="submit" className="submit">
+                                Delete
+                            </Button>
+                        </>
+                    </FormControl>
                 </form>
                 {data.length !== 0 ? (
                     <ul className="teamStandUpList">

@@ -1,19 +1,20 @@
-import React from "react";
-import { BrowserRouter as Link } from "react-router-dom";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
+import * as React from "react";
+import { AppNavBar, setItemActive } from "baseui/app-nav-bar";
+import { TriangleRight } from "baseui/icon";
 
-export default function MyNavbar() {
+export default function Navbar() {
+    const [mainItems, setMainItems] = React.useState([
+        { icon: TriangleRight, label: "Home", link: "/" },
+        { icon: TriangleRight, label: "SignIn", link: "/signin" },
+    ]);
+    function handleMainItemSelect(item) {
+        window.location.replace(item.link);
+    }
     return (
-        <>
-            <Navbar bg="light" variant="light">
-                <Navbar.Brand href="/">
-                    Sprinklr Developer Dashboard
-                </Navbar.Brand>
-                <Nav className="mr-auto">
-                    <Nav.Link href="/signin">SignIn</Nav.Link>
-                </Nav>
-            </Navbar>
-        </>
+        <AppNavBar
+            title="Sprinklr Developer Dashboard"
+            mainItems={mainItems}
+            onMainItemSelect={handleMainItemSelect}
+        />
     );
 }
