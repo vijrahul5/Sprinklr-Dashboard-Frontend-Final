@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import useAuthorize from "./useAuthorize";
-import { Button } from "baseui/button";
+import { Button, SIZE } from "baseui/button";
 import { FormControl } from "baseui/form-control";
 import { Input } from "baseui/input";
 
@@ -37,11 +37,16 @@ const JiraAuth = () => {
                     localStorage.setItem("CLIENT_ID", clientId);
                     localStorage.setItem("CLIENT_SECRET", clientSecret);
                 }}
+                size={SIZE.compact}
             >
                 Authorize
             </Button>
 
-            <Button onClick={() => getTokens()} style={{ marginLeft: "1rem" }}>
+            <Button
+                onClick={() => getTokens()}
+                style={{ marginLeft: "1rem" }}
+                size={SIZE.compact}
+            >
                 Save
             </Button>
         </div>

@@ -24,12 +24,7 @@ body,
     display: flex;
     justify-content: center;
     flex-direction: column;
-    background: linear-gradient(
-        to right,
-        #f64f59,
-        #c471ed,
-        #12c2e9
-    ); 
+    background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9);
 }
 
 .signin {
@@ -47,7 +42,7 @@ body,
 }
 
 .signin h3 {
-    all:unset;
+    all: unset;
     font-size: 1.5rem;
     font-weight: 500;
     text-align: center;
@@ -86,6 +81,7 @@ body,
     display: flex;
     justify-content: start;
     align-items: center;
+    grid-area: sidebar;
 }
 .sidebar h1 {
     all: unset;
@@ -162,28 +158,25 @@ span {
     margin-left: 16px;
 }
 .teamStandUpList {
-    width: 40%;
-    height: auto;
-    max-height: 100vh;
+    width: 95%;
+    height: 100%;
     overflow: scroll;
-    margin: auto;
-    margin-top: 4rem;
-    padding-left: 0px;
+    margin: 0rem auto;
     padding: 1rem;
     border-top: 4px solid black;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    grid-area: teamList;
 }
 .teamStandUpList ul {
     list-style: none;
     padding: 1rem;
     margin-bottom: 1rem;
-    background-color: #EEEEEE;
+    background-color: #eeeeee;
 }
 .teamStandUpList ul li {
     display: flex;
     align-items: center;
     font-size: 0.8rem;
-    
 }
 .teamStandUpList ul .param {
     width: 40%;
@@ -195,16 +188,13 @@ span {
     margin-bottom: 0.2rem;
 }
 .teamForm {
-    width: 20%;
-    
+    width: 95%;
     margin: auto;
-    margin-top: 1.5rem;
     border-top: 4px solid black;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     padding: 1rem;
 }
 .teamForm div {
-    
     width: 100%;
     display: flex;
     justify-content: center;
@@ -217,14 +207,21 @@ span {
 .teamForm .submit {
     margin-left: 1rem;
 }
+#teamForm1 {
+    grid-area: teamForm1;
+}
+#teamForm2 {
+    grid-area: teamForm2;
+}
 .standUpForm {
     border-top: 4px solid black;
-    width: 30%;
+    width: 95%;
+    height: 100%;
     padding: 1rem;
     margin: auto;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    margin-top: 2rem;
     font-size: 0.8rem;
+    grid-area: standup;
 }
 .standUpForm input {
     display: block;
@@ -232,7 +229,7 @@ span {
     overflow: scroll;
     font-size: 0.8rem;
 }
-.standUpForm .form-control{
+.standUpForm .form-control {
     font-size: 0.8rem;
 }
 .profile {
@@ -245,7 +242,7 @@ span {
     border-top: 4px solid black;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     margin: auto;
-    margin-top: 2rem;
+    grid-area: profile;
 }
 hr {
     border: 0;
@@ -302,12 +299,32 @@ hr {
     margin-top: 3rem;
     margin-bottom: 3rem;
 }
-.jiraAuth{
-    width: 20%;
-    margin: auto;
-    margin-top: 2rem;
-    margin-bottom: 6rem;
+.jiraAuth {
+    width: 100%;
+    height: 60%;
+    /* margin: auto; */
+    margin: 0px auto;
     padding: 1rem;
     box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
     border-top: 4px solid black;
+    grid-area: jira;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center; */
+}
+.dashboard-container {
+    display: grid;
+    height: 100%;
+    grid-template-columns: 0.8fr 1fr 0.8fr;
+    grid-template-rows: 0.2fr 0.3fr 1fr 1fr 0.7fr 1fr 1fr;
+    grid-template-areas:
+        "sidebar sidebar sidebar"
+        "profile jira teamList"
+        "standup jira teamList"
+        "standup jira teamList"
+        "standup gitlab teamList"
+        "links gitlab teamForm1"
+        "links gitlab teamForm2";
+    grid-gap: 1rem;
 }

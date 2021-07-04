@@ -4,7 +4,7 @@ import Loader from "../components/Loader/Loader";
 import { useUpdateTeam, useFetchEmployeeTeamData } from "../Api";
 import { FormControl } from "baseui/form-control";
 import { Input } from "baseui/input";
-import { Button } from "baseui/button";
+import { Button,SIZE } from "baseui/button";
 
 function Team() {
     // Component for accessing team data and their stand ups
@@ -62,7 +62,7 @@ function Team() {
     } else {
         return (
             <>
-                <form className="teamForm" onSubmit={handleAddBtn}>
+                <form className="teamForm" onSubmit={handleAddBtn} id="teamForm1">
                     <FormControl
                         label={() => "Add Team Member"}
                         className="form-control"
@@ -74,13 +74,13 @@ function Team() {
                                 name="employeeEmail"
                                 className="form-control"
                             />
-                            <Button type="submit" className="submit">
+                            <Button type="submit" className="submit" size={SIZE.compact}>
                                 Add
                             </Button>
                         </>
                     </FormControl>
                 </form>
-                <form className="teamForm" onSubmit={handleDeleteBtn}>
+                <form className="teamForm" onSubmit={handleDeleteBtn} id="teamForm2">
                     <FormControl
                         label={() => "Delete Team Member"}
                         className="form-control"
@@ -92,7 +92,7 @@ function Team() {
                                 name="employeeEmail"
                                 className="form-control"
                             />
-                            <Button type="submit" className="submit">
+                            <Button type="submit" className="submit" size={SIZE.compact}>
                                 Delete
                             </Button>
                         </>

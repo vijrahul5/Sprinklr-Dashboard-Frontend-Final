@@ -3,8 +3,9 @@ import Loader from "../components/Loader/Loader";
 import { useState } from "react";
 import { useFetchEmployeeStandUp, useUpdateStandUp } from "../Api";
 import { FormControl } from "baseui/form-control";
-import { Button } from "baseui/button";
+import { Button} from "baseui/button";
 import { Textarea } from "baseui/textarea";
+import {SIZE} from "baseui/input";
 
 function StandUp() {
     // Component for Stand Up message submission or editing
@@ -84,6 +85,7 @@ function StandUp() {
                                         question1: e.currentTarget.value,
                                     });
                                 }}
+                                size={SIZE.mini}
                             />
                         </FormControl>
                         <FormControl
@@ -99,6 +101,7 @@ function StandUp() {
                                         question2: e.currentTarget.value,
                                     });
                                 }}
+                                size={SIZE.mini}
                             />
                         </FormControl>
                         <FormControl
@@ -114,9 +117,10 @@ function StandUp() {
                                         question3: e.currentTarget.value,
                                     });
                                 }}
+                                size={SIZE.mini}
                             />
                         </FormControl>
-                        <Button type="submit" className="submit">
+                        <Button type="submit" className="submit" size={SIZE.compact}>
                             Edit
                         </Button>
                     </form>
@@ -136,6 +140,7 @@ function StandUp() {
                                         question1: e.currentTarget.value,
                                     });
                                 }}
+                                size={SIZE.mini}
                             />
                         </FormControl>
                         <FormControl
@@ -152,6 +157,7 @@ function StandUp() {
                                         question2: e.currentTarget.value,
                                     });
                                 }}
+                                size={SIZE.mini}
                             />
                         </FormControl>
                         <FormControl
@@ -168,9 +174,10 @@ function StandUp() {
                                         question3: e.currentTarget.value,
                                     });
                                 }}
+                                size={SIZE.mini}
                             />
                         </FormControl>
-                        <Button type="submit" className="submit">
+                        <Button type="submit" className="submit" size={SIZE.compact}>
                             Submit
                         </Button>
                     </form>
