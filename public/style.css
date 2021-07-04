@@ -200,7 +200,6 @@ span {
     border-top: 4px solid black;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     padding: 1rem;
-    font-size: 0.8rem;
 }
 .teamForm div {
     
@@ -212,13 +211,9 @@ span {
 .teamForm div input {
     display: block;
     width: 100%;
-    font-size: 0.8rem;
 }
 .teamForm .submit {
-    height: 60%;
-    padding: 0.5rem;
     margin-left: 1rem;
-    font-size: 0.8rem;
 }
 .standUpForm {
     border-top: 4px solid black;
@@ -235,7 +230,9 @@ span {
     overflow: scroll;
     font-size: 0.8rem;
 }
-
+.standUpForm .form-control{
+    font-size: 0.8rem;
+}
 .profile {
     width: 14rem;
     height: 14rem;
@@ -247,7 +244,6 @@ span {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     margin: auto;
     margin-top: 2rem;
-    /* padding: 0.5rem; */
 }
 hr {
     border: 0;

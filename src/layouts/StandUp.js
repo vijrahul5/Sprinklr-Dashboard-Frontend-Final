@@ -1,12 +1,18 @@
 import React from "react";
 import Loader from "../components/Loader/Loader";
+import { useState } from "react";
 import { useFetchEmployeeStandUp, useUpdateStandUp } from "../Api";
 import { FormControl } from "baseui/form-control";
-import { Input } from "baseui/input";
 import { Button } from "baseui/button";
+import { Textarea } from "baseui/textarea";
 function StandUp() {
     // Component for Stand Up message submission or editing
-    const [loading, data, error] = useFetchEmployeeStandUp(); // Fetches employee's stand up for the day
+    const [value, setValue] = useState({
+        question1: "",
+        question2: "",
+        question3: "",
+    });
+    const [loading, data, error] = useFetchEmployeeStandUp(setValue); // Fetches employee's stand up for the day
     const [addError, editError, addStandUp, editStandUp] = useUpdateStandUp(); // Provides functions for adding or deleting stand up
 
     if (error !== false) {
@@ -19,7 +25,8 @@ function StandUp() {
         return <h1>{editError}</h1>;
     }
 
-    function handleSubmit(e) { // Event Listener for adding a standup
+    function handleSubmit(e) {
+        // Event Listener for adding a standup
         e.preventDefault();
         const formData = new FormData(e.target);
         const data = Object.fromEntries(formData.entries());
@@ -35,7 +42,8 @@ function StandUp() {
         addStandUp(data);
     }
 
-    function handleEdit(e) {  // Event Listener for editing a standup
+    function handleEdit(e) {
+        // Event Listener for editing a standup
         e.preventDefault();
         const formData = new FormData(e.target);
         const data = Object.fromEntries(formData.entries());
@@ -58,80 +66,108 @@ function StandUp() {
             <>
                 {data ? (
                     <form className="standUpForm" onSubmit={handleEdit}>
-                        
-                        <label htmlFor="question1">
-                            What work was done yesterday ?
-                        </label>
-                        <input
-                            type="textarea"
-                            placeholder="Answer"
-                            name="question1"
-                            defaultValue={data.question1}
-                            className="form-control"
-                        />
-                        <label htmlFor="question2">
-                            What is the agenda for today ?
-                        </label>
-                        <input
-                            type="textarea"
-                            placeholder="Answer"
-                            name="question2"
-                            defaultValue={data.question2}
-                            className="form-control"
-                        />
-                        <label htmlFor="question3">
-                            What work has been done today ?
-                        </label>
-                        <input
-                            type="textarea"
-                            placeholder="Answer"
-                            name="question3"
-                            defaultValue={data.question3}
-                            className="form-control"
-                        />
-
-                        <input
-                            type="submit"
-                            className="submit btn btn-dark mt-1"
-                            value="Edit"
-                            id="floatingTextarea"
-                        />
+                        <FormControl
+                            label={() => "What work was done yesterday ?"}
+                        >
+                            <Textarea
+                                value={value.question1}
+                                name="question1"
+                                className="form-control"
+                                onChange={(e) => {
+                                    setValue({
+                                        ...value,
+                                        question1: e.currentTarget.value,
+                                    });
+                                }}
+                            />
+                        </FormControl>
+                        <FormControl
+                            label={() => "What is the agenda for today ?"}
+                        >
+                            <Textarea
+                                value={value.question2}
+                                name="question2"
+                                className="form-control"
+                                onChange={(e) => {
+                                    setValue({
+                                        ...value,
+                                        question2: e.currentTarget.value,
+                                    });
+                                }}
+                            />
+                        </FormControl>
+                        <FormControl
+                            label={() => "What work has been done today?"}
+                        >
+                            <Textarea
+                                value={value.question3}
+                                name="question3"
+                                className="form-control"
+                                onChange={(e) => {
+                                    setValue({
+                                        ...value,
+                                        question3: e.currentTarget.value,
+                                    });
+                                }}
+                            />
+                        </FormControl>
+                        <Button type="submit" className="submit">
+                            Edit
+                        </Button>
                     </form>
                 ) : (
                     <form className="standUpForm" onSubmit={handleSubmit}>
-                        <label htmlFor="question1">
-                            What work was done yesterday ?
-                        </label>
-                        <input
-                            type="textarea"
-                            placeholder="Answer"
-                            name="question1"
-                            className="form-control"
-                        />
-                        <label htmlFor="question2">
-                            What is the agenda for today ?
-                        </label>
-                        <input
-                            type="textarea"
-                            placeholder="Answer"
-                            name="question2"
-                            className="form-control"
-                        />
-                        <label htmlFor="question3">
-                            What work has been done today ?
-                        </label>
-                        <input
-                            type="textarea"
-                            placeholder="Answer"
-                            name="question3"
-                            className="form-control"
-                        />
-
-                        <input
-                            type="submit"
-                            className="submit btn btn-dark mt-1"
-                            value="Submit"
-                        />
+                        <FormControl
+                            label={() => "What work was done yesterday ?"}
+                        >
+                            <Textarea
+                                value={value.question1}
+                                name="question1"
+                                className="form-control"
+                                placeholder="Answer"
+                                onChange={(e) => {
+                                    setValue({
+                                        ...value,
+                                        question1: e.currentTarget.value,
+                                    });
+                                }}
+                            />
+                        </FormControl>
+                        <FormControl
+                            label={() => "What is the agenda for today ?"}
+                        >
+                            <Textarea
+                                value={value.question2}
+                                name="question2"
+                                className="form-control"
+                                placeholder="Answer"
+                                onChange={(e) => {
+                                    setValue({
+                                        ...value,
+                                        question2: e.currentTarget.value,
+                                    });
+                                }}
+                            />
+                        </FormControl>
+                        <FormControl
+                            label={() => "What work has been done today?"}
+                        >
+                            <Textarea
+                                value={value.question3}
+                                name="question3"
+                                className="form-control"
+                                placeholder="Answer"
+                                onChange={(e) => {
+                                    setValue({
+                                        ...value,
+                                        question3: e.currentTarget.value,
+                                    });
+                                }}
+                            />
+                        </FormControl>
+                        <Button type="submit" className="submit">
+                            Submit
+                        </Button>
                     </form>
                 )}
             </>

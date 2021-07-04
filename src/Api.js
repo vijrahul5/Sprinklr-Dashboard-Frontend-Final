@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export const useFetchEmployeeData = function () { // Fetches Employee Data from the backend server
+export const useFetchEmployeeData = function () {
+    // Fetches Employee Data from the backend server
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState(null);
     const [error, setError] = useState(false);
@@ -27,7 +28,8 @@ export const useFetchEmployeeData = function () { // Fetches Employee Data from 
     return [loading, data, error];
 };
 
-export const useFetchEmployeeTeamData = function () { // Fetches Team Data and their daily standups from the backend server
+export const useFetchEmployeeTeamData = function () {
+    // Fetches Team Data and their daily standups from the backend server
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState(null);
     const [error, setError] = useState(false);
@@ -53,7 +55,8 @@ export const useFetchEmployeeTeamData = function () { // Fetches Team Data and t
     return [loading, data, error];
 };
 
-export const useUpdateTeam = function () { // Adds or Deletes a team member by sending a post/delete request to the backend server
+export const useUpdateTeam = function () {
+    // Adds or Deletes a team member by sending a post/delete request to the backend server
     const [addError, setAddError] = useState(false);
     const [deleteError, setDeleteError] = useState(false);
 
@@ -90,7 +93,8 @@ export const useUpdateTeam = function () { // Adds or Deletes a team member by s
     return [addError, deleteError, addTeamMember, deleteTeamMember];
 };
 
-export const useFetchEmployeeStandUp = function () { // Fetches the logged in employee's stand up for the day
+export const useFetchEmployeeStandUp = function (setValue) {
+    // Fetches the logged in employee's stand up for the day
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState();
     const [error, setError] = useState(false);
@@ -102,6 +106,7 @@ export const useFetchEmployeeStandUp = function () { // Fetches the logged in em
                 if (res.data.status === "Success") {
                     setLoading(false);
                     setData(() => res.data.standUp);
+                    setValue(() => res.data.standUp);
                 } else {
                     setLoading(false);
                 }
@@ -114,7 +119,8 @@ export const useFetchEmployeeStandUp = function () { // Fetches the logged in em
     return [loading, data, error];
 };
 
-export const useUpdateStandUp = function () { // Submits or edits the logged in employee's stand up for the day
+export const useUpdateStandUp = function () {
+    // Submits or edits the logged in employee's stand up for the day
     const [addError, setAddError] = useState(false);
     const [editError, setEditError] = useState(false);
 
@@ -147,7 +153,8 @@ export const useUpdateStandUp = function () { // Submits or edits the logged in 
     return [addError, editError, addStandUp, editStandUp];
 };
 
-export const useVerifyPublicRoute = function (initialLoading, initialError) { // Used to verify with the backend server if the employee has access to this public route or not
+export const useVerifyPublicRoute = function (initialLoading, initialError) {
+    // Used to verify with the backend server if the employee has access to this public route or not
     const [loading, setLoading] = useState(initialLoading);
     const [error, setError] = useState(initialError);
 
@@ -169,7 +176,8 @@ export const useVerifyPublicRoute = function (initialLoading, initialError) { //
     return [loading, error];
 };
 
-export const useVerifyPrivateRoute = function (initialLoading, initialError) { // Used to verify with the backend server if the employee has access to this private route or not
+export const useVerifyPrivateRoute = function (initialLoading, initialError) {
+    // Used to verify with the backend server if the employee has access to this private route or not
     const [loading, setLoading] = useState(initialLoading);
     const [error, setError] = useState(initialError);
 
