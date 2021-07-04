@@ -10,7 +10,11 @@ function Profile() {
     }
 
     if (loading) {
-        return <Loader />;
+        return (
+            <div className="profile">
+                <Loader />
+            </div>
+        );
     } else {
         return (
             <div className="profile">

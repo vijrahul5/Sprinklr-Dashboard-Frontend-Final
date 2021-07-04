@@ -5,6 +5,7 @@ import { useFetchEmployeeStandUp, useUpdateStandUp } from "../Api";
 import { FormControl } from "baseui/form-control";
 import { Button } from "baseui/button";
 import { Textarea } from "baseui/textarea";
+
 function StandUp() {
     // Component for Stand Up message submission or editing
     const [value, setValue] = useState({
@@ -60,7 +61,11 @@ function StandUp() {
     }
 
     if (loading) {
-        return <Loader />;
+        return (
+            <form className="standUpForm">
+                <Loader />
+            </form>
+        );
     } else {
         return (
             <>

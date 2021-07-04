@@ -299,3 +299,12 @@ hr {
     margin-top: 3rem;
     margin-bottom: 3rem;
 }
+.jiraAuth{
+    width: 20%;
+    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 6rem;
+    padding: 1rem;
+    box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+    border-top: 4px solid black;
+}

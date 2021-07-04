@@ -54,7 +54,11 @@ function Team() {
     }
 
     if (loading === true) {
-        return <Loader />;
+        return (
+            <ul className="teamStandUpList">
+                <Loader />
+            </ul>
+        );
     } else {
         return (
             <>
