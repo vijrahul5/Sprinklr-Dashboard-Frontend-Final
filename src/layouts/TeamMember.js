@@ -23,7 +23,7 @@ function TeamMember({ teamMember }) {
                         <p className="value">{teamMember.standUp.question2}</p>
                     </li>
                     <li>
-                        <p className="param">Work To Done Today:</p>
+                        <p className="param">Work To Be Done Today:</p>
                         <p className="value">{teamMember.standUp.question3}</p>
                     </li>
                 </>
@@ -38,7 +38,7 @@ function TeamMember({ teamMember }) {
                         <p className="value">Not Submitted Yet</p>
                     </li>
                     <li>
-                        <p className="param">Work To Done Today:</p>
+                        <p className="param">Work To Be Done Today:</p>
                         <p className="value">Not Submitted Yet</p>
                     </li>
                 </>
