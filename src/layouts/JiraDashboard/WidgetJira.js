@@ -12,7 +12,7 @@ const Widgetjira = () => {
   const [jql, setJql] = useState("");
   const [value, setValue] = useState("");
   return (
-    <>
+    <div id="jiraTable">
       <div style={{ display: "flex", maxWidth: "40rem" }}>
         <Input
           value={value}
@@ -30,7 +30,7 @@ const Widgetjira = () => {
         </Button>
       </div>
       <Tableview URL={URL} heading={heading} title={title} jql={jql} />
-    </>
+    </div>
   );
 };
 

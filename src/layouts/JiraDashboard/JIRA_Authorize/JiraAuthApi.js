@@ -1,5 +1,5 @@
 const JiraAuthApi = () => {
-  const server_url = process.env.REACT_APP_SERVER_URL;
+  const server_url = process.env.REACT_APP_SERVER_URL_JIRA;
   async function registerWebhoook(URL, ACCESS_TOKEN, CLOUD_ID) {
     let data = await fetch(URL, {
       body: JSON.stringify({

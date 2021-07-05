@@ -1,5 +1,5 @@
-const client_id = process.env.REACT_APP_CLIENT_ID;
-const client_secret = process.env.REACT_APP_CLIENT_SECRET;
+const client_id = process.env.REACT_APP_CLIENT_ID_JIRA;
+const client_secret = process.env.REACT_APP_CLIENT_SECRET_JIRA;
 const URL = "https://auth.atlassian.com/oauth/token";
 const REFRESH_TOKEN = localStorage.getItem("REFRESH_TOKEN");
 

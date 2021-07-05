@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Pusher from "pusher-js";
 import { NotificationManager } from "react-notifications";
 
-const channelid = process.env.REACT_APP_CHANNEL_ID;
+const channelid = process.env.REACT_APP_CHANNEL_ID_JIRA;
 const cid = localStorage.getItem("WEBHOOK");
 console.log(channelid);
 const pusher = new Pusher(channelid, {
