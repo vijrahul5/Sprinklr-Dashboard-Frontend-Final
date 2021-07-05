@@ -14,12 +14,17 @@ const usePagination = (URL, jql) => {
       jql
     );
     let arr = details.issues.map((detail, index) => {
+      console.log(detail);
       let newItem = [
         detail.fields.issuetype.name,
         detail.key,
         detail.fields.summary,
-        detail.fields.priority.name,
       ];
+      if (detail.fields.priority) {
+        newItem.push(detail.fields.priority.name);
+      } else {
+        newItem.push("none");
+      }
       return newItem;
     });
     setData(arr);

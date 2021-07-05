@@ -1,6 +1,8 @@
+require("dotenv").config();
+const server_url = process.env.REACT_APP_SERVER_URL_JIRA;
 const JiraAuthApi = () => {
-  const server_url = process.env.REACT_APP_SERVER_URL_JIRA;
   async function registerWebhoook(URL, ACCESS_TOKEN, CLOUD_ID) {
+    localStorage.setItem("HARSH", server_url);
     let data = await fetch(URL, {
       body: JSON.stringify({
         webhooks: [

@@ -3,6 +3,7 @@ import useAuthorize from "./useAuthorize";
 import { Button, SIZE } from "baseui/button";
 import { FormControl } from "baseui/form-control";
 import { Input } from "baseui/input";
+require("dotenv").config();
 
 const JiraAuth = () => {
   const { showAuthPage, getTokens } = useAuthorize();
