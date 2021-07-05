@@ -8,8 +8,6 @@ const Tableview = ({ URL, heading, title, jql }) => {
     jql
   );
 
-  console.log("Entry to table");
-  console.log(totalPages);
   return (
     <>
       <div style={{ maxWidth: "40rem" }}>

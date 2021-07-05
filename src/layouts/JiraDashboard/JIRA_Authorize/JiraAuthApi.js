@@ -1,4 +1,28 @@
 const JiraAuthApi = () => {
+  const server_url = process.env.REACT_APP_SERVER_URL;
+  async function registerWebhoook(URL, ACCESS_TOKEN, CLOUD_ID) {
+    let data = await fetch(URL, {
+      body: JSON.stringify({
+        webhooks: [
+          {
+            jqlFilter: "project != DEMO OR project = DEMO",
+            events: ["jira:issue_created", "jira:issue_updated"],
+          },
+        ],
+        url: `${server_url}?cid=${CLOUD_ID}`,
+      }),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${ACCESS_TOKEN}`,
+      },
+      method: "POST",
+    });
+    let dataJSON = await data.json();
+    let webhookId = dataJSON.webhookRegistrationResult[0].createdWebhookId;
+    let webhookToken = `${CLOUD_ID}${webhookId}`;
+    return webhookToken;
+  }
   async function getCloudId(URL, ACCESS_TOKEN) {
     let data = await fetch(URL, {
       headers: {
@@ -36,12 +60,14 @@ const JiraAuthApi = () => {
       method: "POST",
     });
     let dataJSON = await data.json();
+    console.log(dataJSON);
+
     let REFRESH_TOKEN = dataJSON.refresh_token;
     let ACCESS_TOKEN = dataJSON.access_token;
     return [REFRESH_TOKEN, ACCESS_TOKEN];
   }
 
-  return { getCloudId, getRefreshAndAccessCode };
+  return { getCloudId, getRefreshAndAccessCode, registerWebhoook };
 };
 
 export default JiraAuthApi;

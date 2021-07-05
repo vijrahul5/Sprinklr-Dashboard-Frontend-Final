@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import Pusher from "pusher-js";
 import { NotificationManager } from "react-notifications";
-const channelid = "";
-const cid = "997";
 
+const channelid = process.env.REACT_APP_CHANNEL_ID;
+const cid = localStorage.getItem("WEBHOOK");
+console.log(channelid);
 const pusher = new Pusher(channelid, {
   cluster: "ap2",
 });
@@ -15,7 +16,7 @@ const Notification = () => {
       console.log("notification");
       NotificationManager.success(
         `${data.details.type}`,
-        `${data.details.key} cid : ${data.details.cid}`,
+        `${data.details.key}`,
         100000000000
       );
     });

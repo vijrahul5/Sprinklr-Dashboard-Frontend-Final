@@ -6,24 +6,28 @@ const usePagination = (URL, jql) => {
   const [data, setData] = useState([]);
   const { getIssues } = GeneralApis();
   const [totalPages, setTotalPages] = useState(1);
-
-  useEffect(() => {
-    getIssues(URL, (pageNumber - 1) * EntryPerPage, EntryPerPage, jql).then(
-      (data) => {
-        let arr = data.issues.map((detail) => {
-          let newItem = [
-            detail.fields.issuetype.name,
-            detail.key,
-            detail.fields.summary,
-            detail.fields.priority.name,
-          ];
-          return newItem;
-        });
-        setData(arr);
-        let totalPages = Math.ceil(data.total / EntryPerPage);
-        setTotalPages(totalPages);
-      }
+  async function fillData() {
+    let details = await getIssues(
+      URL,
+      (pageNumber - 1) * EntryPerPage,
+      EntryPerPage,
+      jql
     );
+    let arr = details.issues.map((detail, index) => {
+      let newItem = [
+        detail.fields.issuetype.name,
+        detail.key,
+        detail.fields.summary,
+        detail.fields.priority.name,
+      ];
+      return newItem;
+    });
+    setData(arr);
+    let totalPages = Math.ceil(details.total / EntryPerPage);
+    setTotalPages(totalPages);
+  }
+  useEffect(() => {
+    fillData();
   }, [pageNumber, URL, jql]);
 
   return {

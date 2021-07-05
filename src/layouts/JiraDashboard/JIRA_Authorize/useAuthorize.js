@@ -8,7 +8,7 @@ const useAuthorize = () => {
     isAuthenticated()
   );
 
-  const { getCloudId, getRefreshAndAccessCode } = AuthApis();
+  const { getCloudId, getRefreshAndAccessCode, registerWebhoook } = AuthApis();
 
   function isAuthenticated() {
     if (localStorage.getItem("CLOUD_ID") !== null) return true;
@@ -16,15 +16,16 @@ const useAuthorize = () => {
   }
 
   function goToHome() {
-    history.replace("/");
-    window.location.href = "http://localhost:3000/";
+    history.replace("/dashboard");
+    window.location.href = "http://localhost:3000/dashboard";
   }
   function showAuthPage(URL) {
     window.location.href = URL;
   }
   function getAuthCode() {
     let len = window.location.href.length;
-    let AUTH_CODE = window.location.href.slice(28, len - 12);
+    let AUTH_CODE = window.location.href.slice(37, len - 12);
+    console.log(AUTH_CODE);
     return AUTH_CODE;
   }
   async function getTokens() {
@@ -37,14 +38,20 @@ const useAuthorize = () => {
       client_id,
       client_secret,
       AUTH_CODE,
-      "http://localhost:3000"
+      "http://localhost:3000/dashboard"
     );
 
     let CLOUD_ID = await getCloudId(
       "https://api.atlassian.com/oauth/token/accessible-resources",
       ACCESS_TOKEN
     );
+    // let webhookId = await registerWebhoook(
+    //   `https://api.atlassian.com/ex/jira/${CLOUD_ID}/rest/api/2/webhook`,
+    //   ACCESS_TOKEN,
+    //   CLOUD_ID
+    // );
 
+    // localStorage.setItem("WEBHOOK", webhookId);
     saveTokens(AUTH_CODE, REFRESH_TOKEN, CLOUD_ID, ACCESS_TOKEN);
     goToHome();
     setDoneAuthentication(true);
