@@ -1,6 +1,6 @@
 import React from "react";
 import useAuthorize from "../JIRA_Authorize/useAuthorize";
-import Auth from "../JIRA_Authorize/JiraAuth";
+import JiraAuth from "../JIRA_Authorize/JiraAuth";
 import "react-notifications/lib/notifications.css";
 import { NotificationContainer } from "react-notifications";
 import Notification from "../Notify/Notification";
@@ -11,7 +11,7 @@ const Jira = () => {
 
   return (
     <>
-      {doneAuthentication === false ? <Auth /> : <Widgetjira />}
+      {doneAuthentication === false ? <JiraAuth /> : <Widgetjira />}
       <NotificationContainer />
       <Notification />
     </>

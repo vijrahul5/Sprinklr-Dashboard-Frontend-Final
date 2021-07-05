@@ -1,6 +1,7 @@
-const client_id = "";
-const client_secret = "";
+require("dotenv").config();
 
+const client_id = process.env.REACT_APP_CLIENT_ID_JIRA;
+const client_secret = process.env.REACT_APP_CLIENT_SECRET_JIRA;
 const URL = "https://auth.atlassian.com/oauth/token";
 const REFRESH_TOKEN = localStorage.getItem("REFRESH_TOKEN");
 
@@ -12,7 +13,6 @@ const GeneralApis = () => {
     jql,
     requestedToken = false
   ) {
-    console.log("issue", jql);
     let ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
     let details = await fetch(url, {
       headers: {
